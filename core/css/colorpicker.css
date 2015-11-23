@@ -1,0 +1,149 @@
+.color_picker_style_base *,
+.color_picker_style_base *::before,
+.color_picker_style_base *::after {
+	padding : 0;
+	margin : 0;
+}
+#color_picker_custom {
+	box-sizing : content-box;
+	border : 8px solid #2E2E2E;
+	border-radius : 20px;
+	width : 470px;
+	height : auto;
+	background : #A8A8A8;
+	box-shadow: 6px 6px 10px 0px rgba(0,0,0,0.75);
+	padding : 20px;
+	overflow : hidden;
+}
+#plane {
+	box-sizing : content-box;
+	border-radius : 10px;
+	max-width: 516px;
+	min-width: 432.5px;
+	width : 500px;
+	position : relative;
+}
+#plane::before {
+	content : "";
+	display : block;
+	padding-top: 50%;
+}
+#color_map_input {
+	position : absolute;
+	top : 0; left : 0;
+	height : 100%;
+	width : 50%;
+}
+#color_bar_input {
+	position : absolute;
+	top : 0px; left : 53%;
+	height : 100%;
+	width : 10%;
+}
+#demoContainer {
+	width : 30%;
+	height : 23%;
+	position : absolute;
+	top : 0; left: 63%;
+}
+#formContainer {
+	position : absolute;
+	top : 18%; left : 63%;
+	width : 30%;
+	height : 80%;
+}
+#color_demo {
+	box-sizing: border-box;
+	height : 100%;
+	width : 80%;
+	margin : auto;
+	border : 3px solid white;
+	border-radius : 10%;
+}
+
+#colorInput {
+	font: normal 18px/22px fantasy, serif;
+	width : 90%;
+	height : 80%;
+	position : absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	margin : auto;
+}
+#colorInput label{
+	display : inline-block;
+	width : 1.5em;
+	text-align: right;
+}
+#colorInput fieldset {
+	margin : 2%;
+}
+#colorInput input {
+	border : 0;
+	background : #F0F0F0;
+	font-size : 18px;
+	font-family : arial;
+}
+.inputValue{
+	text-align: right;
+	display : inline-block;
+	margin-left : 10px;
+	width : 50px;
+}
+#hex_input {
+	width : 70px;
+	text-align : center;
+}
+.color_picker_style_base fieldset {
+	border-width : 3px;
+	font-family : ;
+}
+
+#color_bar_wraper {
+	box-sizing: content-box;
+	max-height: 258px;
+	max-width : 30px;
+	height : 100%;
+	width : 100%;
+	position: relative;
+}
+#color_bar {
+	box-sizing: border-box;
+	background: linear-gradient(red,#FF8000,yellow,#80FF00,lime,#00FF80,aqua,#0080FF,blue,#8000FF,magenta,#FF0080,red);
+	height: 100%;
+	width : 100%;
+}
+#color_bar_pointer {
+	box-sizing: border-box;
+	border: 3px solid #EFF0E9;
+	background: #575757;
+	width: 100%;
+	height : 9px;
+	position : absolute;
+}
+#color_map_wraper {
+	box-sizing : border-box;
+	position: relative;
+	max-width: 258px;
+	width : 100%;
+	border : 1px solid black;
+}
+#color_map_wraper * {
+	position: absolute;
+	top: 0; left: 0;
+	width : 100%;
+	height : 100%;
+}
+#color_map_wraper::before {
+	content : "";
+	display : block;
+	padding-top : 100%;
+}
+#color_map_pointer {
+	box-sizing: border-box;
+	border : 2px solid white;
+	background : #575757;
+	width : 12px;
+	height : 12px;
+	border-radius: 50%;
+	position: absolute;
+}

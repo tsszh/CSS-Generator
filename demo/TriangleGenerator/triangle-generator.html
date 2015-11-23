@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Triangle Generator</title>
+	<link rel="stylesheet" href="../../core/css/input_elements.css" />
+	<link rel="stylesheet" href="triangle-generator.css"/>
+</head>
+<body>
+<div class="back-cover"></div>
+<section class="main-container">
+	<section class="demoContainer">
+		<div class="demo absolute-center" id="demo">
+			<div class="tri-inner" id="demoInner"></div>
+		</div>
+	</section>
+	<section class="controlContainer">
+		<form class="control-form">
+			
+			<fieldset>
+				<h5>Dimension</h5><hr/>
+				<div class="input-item range-number compact-range clear-fix">
+					<div class="label-field-container clear-fix">
+						<label>Width</label>
+						<div class="field-unit-container">
+							<input type="number" class="input-field" name="widthValue" />
+						</div>
+					</div>
+					<input type="range" class="input-ui" name="width" />
+				</div>
+				<div class="input-item range-number compact-range clear-fix">
+					<div class="label-field-container clear-fix">
+					<label>Height</label>
+					<div class="field-unit-container"><input type="number" class="input-field" name="heightValue" /></div>
+					</div>
+					<input type="range" class="input-ui" name="height" />
+				</div>
+				<div class="input-item range-number compact-range clear-fix">
+					<div class="label-field-container clear-fix">
+					<label>Border</label>
+					<div class="field-unit-container"><input type="number" class="input-field" name="borderWidthValue" /></div>
+					</div>
+					<input type="range" class="input-ui" name="borderWidth" />
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<h5>Triangle Color</h5><hr/>
+				<div class="input-item color-selector clear-fix">
+					<label>Color</label>
+					<input type="text" class="input-field hex-color" name="triColorValue"/>
+					<div class="input-ui color-popup" name="triColor"></div>
+				</div>
+				<div class="input-item range-number compact-range clear-fix">
+					<div class="label-field-container clear-fix">
+						<label>Opacity</label>
+						<div class="field-unit-container">
+							<input type="number" class="input-field" name="triColorOpacityValue" />
+						</div>
+						<input type="range" class="input-ui absolute-center" name="triColorOpacity" />
+					</div>
+				</div>
+				<div class="input-item checkbox-input clear-fix">
+					<label class="checkbox-layout">Body</label><!--
+					--><div class="checkbox-layout">
+						<div class="checkbox-container">
+							<input type="checkbox" class="input-ui" name="isBorderColr">
+							<div></div>
+						</div>
+					</div><!--
+					--><label class="checkbox-layout">Border</label>
+					<input type="text" class="input-field hidden-input" name="isBorderColrValue">
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<h5>Triangle Style</h5><hr/>
+				<div class="input-item radio-list clear-fix">
+					<!-- Isosceles Triangle -->
+					<fieldset id="isoscele-panel">
+						<div>
+							<input type="radio" class="input-ui" id="triDirection-up" name="triDirection" value="up" />
+							<label for="triDirection-up">Up</label>
+						</div>
+						<div>
+							<input type="radio" class="input-ui" id="triDirection-down" name="triDirection" value="down" />
+							<label for="triDirection-down">Down</label>
+						</div>
+						<div>
+							<input type="radio" class="input-ui" id="triDirection-left" name="triDirection" value="left" />
+							<label for="triDirection-left">Left</label>
+						</div>
+						<div>
+							<input type="radio" class="input-ui" id="triDirection-right" name="triDirection" value="right" />
+							<label for="triDirection-right">Right</label>
+						</div>
+					</fieldset>
+					<fieldset id="right-angle-panel" style="display:none">
+						<!-- Right Angled Triangle -->
+						<div>
+							<input type="radio" class="input-ui" id="triDirection-top-left" name="triDirection" value="top-left" />
+							<label for="triDirection-top-left">Top-Left</label>
+						</div>
+						<div>
+							<input type="radio" class="input-ui" id="triDirection-top-right" name="triDirection" value="top-right" />
+							<label for="triDirection-top-right">Top-Right</label>
+						</div>
+						<div>
+							<input type="radio" class="input-ui" id="triDirection-bottom-right" name="triDirection" value="bottom-right" />
+							<label for="triDirection-bottom-right">Bottom-Right</label>
+						</div>
+						<div>
+							<input type="radio" class="input-ui" id="triDirection-bottom-left" name="triDirection" value="bottom-left" />
+							<label for="triDirection-bottom-left">Bottom-Left</label>
+						</div>
+					</fieldset>
+					<input type="text" class="input-field hidden-input" name="triDirectionValue"/>
+				</div>
+				<div class="input-item checkbox-input clear-fix">
+						<label class="checkbox-layout">Free</label><!--
+						--><div class="checkbox-layout">
+							<div class="checkbox-container">
+								<input type="checkbox" class="input-ui" name="isSymmetry">
+								<div></div>
+							</div>
+						</div><!--
+						--><label class="checkbox-layout">Symmetry</label>
+					<input type="text" class="input-field hidden-input" name="isSymmetryValue">
+				</div>
+				<div class="input-item checkbox-input clear-fix">
+					<label class="checkbox-layout">Isosceles</label><!--
+					--><div class="checkbox-layout">
+						<div class="checkbox-container">
+							<input type="checkbox" class="input-ui" name="isRightAngle">
+							<div></div>
+						</div>
+					</div><!--
+					--><label class="checkbox-layout">Right-Angle</label>
+					<input type="text" class="input-field hidden-input" name="isRightAngleValue">
+				</div>
+			</fieldset>
+		</form>	
+	</section>
+	<section id="output">
+		<div id="output-container">
+			<p class="css-title" id="css-title">.outer, .inner {</p>
+			<p>box-sizing : content-box;</p>
+			<p>width  : 0;</p>
+			<p>height : 0;</p>
+			<p>border-style : solid;</p>
+			<div class="complex-model">
+			<p class="css-title">}</p>
+			<p class="css-title">.outer {</p>
+			<p>border-color : <span id="outer-color"></span>;</p>
+			<p>border-width : <span id="outer-width"></span>;</p>
+			<p class="css-title">}</p>
+			<p class="css-title">.inner {</p>
+			</div>
+			<p>border-color : <span id="inner-color"></span>;</p>
+			<p>border-width : <span id="inner-width"></span>;</p>
+			<p class="complex-model">margin : <span id="inner-margin"></span>;</p>
+			<p class="css-title">}</p>
+		</div>
+	</section>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="../../core/js/form-linker-core.js"></script>
+	<script type="text/javascript" src="../../core/js/ColorPickerUtility.js"></script>
+	<script type="text/javascript" src="../../core/js/setDragable.js"></script>
+	<script type="text/javascript">
+		/* global StyleForm : false */
+		"use strict";
+		var styleFormSetting = {
+			"triDirection" : {
+				"type" : "radio-list",
+				"value" : "up",
+				"unit" : null,
+				"range" : null
+			},
+			"width" : {
+				"type" : "range-number",
+				"value": 100,
+				"unit" : "px",
+				"range": {
+					"px" : [0,250,1]
+				}
+			},
+			"height" : {
+				"type" : "range-number",
+				"value": 100,
+				"unit" : "px",
+				"range": {
+					"px" : [0,250,1]
+				}
+			},
+			"borderWidth" : {
+				"type" : "range-number",
+				"value": 3,
+				"unit" : "px",
+				"range": {
+					"px" : [0,100,1]
+				}
+			},
+			"isRightAngle" : {
+				"type" : "checkbox-input",
+				"value": false,
+				"unit" : null,
+				"range" : null
+			},
+			"isSymmetry" : {
+				"type" : "checkbox-input",
+				"value": true,
+				"unit" : null,
+				"range" : null
+			},
+			"isBorderColr" : {
+				"type" : "checkbox-input",
+				"value": false,
+				"unit" : null,
+				"range" : null
+			},
+			"triColor" : {
+				"type" : "color-selector",
+				"value" : "#FFB700",
+				"unit" : null,
+				"range" : null
+			},
+			"triColorOpacity" : {
+				"type" : "range-number",
+				"value": 1,
+				"unit" : null,
+				"range": {
+					"none" : [0,1,0.01]
+				}
+			}
+		};
+		var updateDemo = (function(){
+			// The function used to normalize the triangle
+			function updateColor (  ) {
+				$.each(rDMap[direction],function(i,value){
+					if ( !borderHidden )
+						$(demo).css("border-"+value+"-color",border[2]);
+					$(demoInner).css("border-"+value+"-color",color);
+				});
+			}
+			function outerTriCal ( form, name ) {
+				var height = parseFloat(form.styleValueLog["height"]), 
+					width  = parseFloat(form.styleValueLog["width"]),
+					h2wRatio = 0.866025403784;
+				if ( form.styleValueLog["isSymmetry"] ) {
+					if ( name === "width" || (name==="isSymmetry"&&width<height)) 
+						height = parseFloat(( (direction<4)?width*h2wRatio:width ).toFixed(2));
+					else
+						width  = parseFloat(( (direction<4)?height/h2wRatio:height ).toFixed(2));
+					form.setStyleValue("width",parseFloat(width),false);
+					form.setStyleValue("height",parseFloat(height),false);
+				}
+				return {
+					"height" : height,
+					"width"  : width
+				};
+			}
+			function innerTriCal ( height, width, border ) {
+				var h2wRatio = height/width;
+				var topM = direction<4? Math.sqrt(1+Math.pow(2*h2wRatio,2)):
+										(h2wRatio+Math.sqrt(1+Math.pow(h2wRatio,2)));
+				var h = height - ( 1 + topM ) * border;	
+				var w = width/height*h;
+				var mTop = 0,
+					mLeft= 0;
+				if ( h >= 0 ) {
+					if ( direction < 4 ) {
+						if ( direction%2 === 0 ) {
+							mTop = (direction===0?topM*border:border-height);
+							mLeft = -w/2;
+						} else {
+							mTop = -w/2;
+							mLeft = (direction===3?topM*border:border-height);
+						}
+					} else {
+						mLeft = direction<6?border-width/2:width/2-border-w;
+						mTop  = direction===5||direction===6?border-height/2:height/2-border-h;
+					}
+				} else {
+					h = w = mTop = mLeft = 0;
+				}
+				return {
+					"height" : h,
+					"width" : w,
+					"margin": mTop+"px 0 0 "+mLeft+"px" 
+				};
+				
+			}
+			function changeOutputFormat ( isSimple ) {
+				if ( isSimple ) {
+					$("#css-title").text(".tri {");
+					$(".complex-model").css("display","none");
+				} else {
+					$("#css-title").text(".outer .inner {");
+					$(".complex-model").css("display","block");
+				}
+			}
+			function updateOutput () {
+					$("#outer-color").text(
+						$(demo).css("border-color")
+							.replace(/rgba\(0, 0, 0, 0\)/g,"transparent")
+							.replace(/(\.\d{3}).*\)/g,"$1)")
+					);
+					$("#outer-width").text($(demo).css("border-width"));
+					$("#inner-color").text(
+						$(demoInner).css("border-color")
+							.replace(/rgba\(0, 0, 0, 0\)/g,"transparent")
+							.replace(/(\.\d{3}).*\)/g,"$1)")
+					);
+					$("#inner-width").text($(demoInner).css("border-width"));
+					$("#inner-margin").text($(demoInner).css("margin"));
+			}
+			var demo = $("#demo"),
+				demoInner = $("#demoInner"),
+				direction = 0,
+				color = "#000000",
+				isSymmetry = false,
+				isBorderColor = false,
+				borderHidden = false,
+				border = [10,"solid","#000000"],
+				dMap = {
+					"up" : 0,
+					"right" : 1,
+					"down" : 2,
+					"left" : 3,
+					"bottom-left" : 4,
+					"top-left" : 5,
+					"top-right" : 6,
+					"bottom-right" : 7
+				},
+				rDMapOrigin = ["up","right","down","left"],
+				rDMap = [["bottom"],["left"],["top"],["right"],
+					["bottom","left"],["top","left"],["top","right"],["bottom","right"]];
+			return function(form,name,value) {
+					switch ( name ) {
+						case "triDirection":
+							// clear previous setting
+							$(demo).css("border-color","transparent");
+							$(demoInner).css("border-color","transparent");
+							direction = dMap[value];
+							updateColor();
+						case "width":
+						case "height":
+							var outerD = outerTriCal(form,name),
+								innerD = innerTriCal(
+									outerD["height"],outerD["width"],border[0]
+								);
+							if ( direction < 4 ) {
+								// isosceles triangle
+								if ( direction%2 === 0 ) { // up & down
+									$(demo).css("border-width","0 "+(outerD["width"]/2)+"px");
+									$(demoInner).css("border-width","0 "+(innerD["width"]/2)+"px")
+												.css("margin",innerD["margin"]);
+								} else { // left & right
+									$(demo).css("border-width",(outerD["width"]/2)+"px 0");
+									$(demoInner).css("border-width",(innerD["width"]/2)+"px 0")
+												.css("margin",innerD["margin"]);
+								}
+								$(demo).css("border-"+rDMap[direction]+"-width",outerD["height"]+"px");
+								$(demoInner).css("border-"+rDMap[direction]+"-width",innerD["height"]+"px");
+							} else {
+								// right angle triangle
+								$(demo).css("border-width",(outerD["height"]/2)+"px "+(outerD["width"]/2)+"px");
+								$(demoInner).css("border-width",(innerD["height"]/2)+"px "+(innerD["width"]/2)+"px")
+											.css("margin",innerD["margin"]);
+							}
+							break;
+						case "borderWidth" :
+							border[0] = value;
+							form.setStyleValue("width");
+							if ( value == 0 ) {
+								if ( !borderHidden ) {
+									borderHidden = true;
+									changeOutputFormat(true);
+									$(demo).css("border-color","transparent");
+								}
+							} else  if ( borderHidden ){
+								borderHidden = false;
+								changeOutputFormat(false);
+								updateColor();
+							}
+							break;
+						case "triColor":
+						case "triColorOpacity":
+							name = name.replace(/Opacity$/,"");
+							value = StyleFormUtility.hexToRGBA( form.styleValueLog[name], form.styleValueLog[name+"Opacity"] );
+							if ( isBorderColor )
+								border[2] = value;
+							else
+								color = value;
+							updateColor();
+							break;
+						case "isRightAngle" :
+							if ( !value ) { // is Isoscles
+								$("#right-angle-panel").css("display","none");
+								$("#isoscele-panel").css("display","block");
+								form.setStyleValue("triDirection",rDMapOrigin[direction>=4?direction-4:direction]);
+							} else {
+								$("#right-angle-panel").css("display","block");
+								$("#isoscele-panel").css("display","none");
+								form.setStyleValue("triDirection",rDMap[direction<4?direction+4:direction].join("-"));
+							}
+							break;
+						case "isSymmetry" :
+							if ( value ) { // Force To Be Symmetry
+								isSymmetry = true;
+								form.setStyleValue("width",Math.min(form.styleValueLog["width"],form.styleValueLog["height"]));
+							} else {
+								isSymmetry = false;
+							}
+							break;
+						case "isBorderColr" :
+							if ( isBorderColor !== value ) {
+								isBorderColor = value;
+								value = value?border[2]:color;
+								if ( value.charAt(0) !== "#" ){
+									value = StyleFormUtility.rgbaToHexOpacity(value);
+									form.setStyleValue("triColorOpacity",value["opacity"],false);
+									value = value["hex"];
+								}
+								form.setStyleValue("triColor",value,false);
+							}
+							break;
+						default:
+					}
+					updateOutput();
+				};
+		})();
+		
+
+		$(document).ready(function(){
+			new StyleForm( $("form").get(0), styleFormSetting, updateDemo );
+			(function(){
+				var demoContainer = $(".demoContainer").get(0);
+				$(demoContainer).addPopUpColorPicker({
+					initialColor : "#FFF59C",
+					position : "bottom-left",
+					callback : function(color) {
+						$(demoContainer).css("background-color",color);
+					}
+				}).setColor("#FFF59C");
+			})();
+		});
+	</script>
+</section>
+</body>
+</html>

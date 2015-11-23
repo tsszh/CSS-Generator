@@ -1,0 +1,253 @@
+*,
+*::before,
+*::after {
+	box-sizing : border-box;
+	padding : 0;
+	margin : 0;
+}
+.absolute-center {
+	position : absolute;
+	top : 0; bottom: 0; left : 0; right : 0;
+	margin: auto;
+}
+.clear-fix::before,
+.clear-fix::after {
+	content : "";
+	display : table;
+	clear : both;
+}
+/****************************************************************/
+/*                     Layout                                   */
+/****************************************************************/
+.main-container {
+	max-width: 1100px;
+	min-width: 400px;
+	margin: 0 auto;
+	width: 100%;
+}
+.demoContainer {
+	height : 300px;
+	width  : 95%;
+	position : relative;
+	background: lightyellow;
+	border : 2px solid black;
+	border-radius: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	box-shadow: 3px 3px 10px 0px black;
+	margin: auto;
+}
+#output {
+	height: 470px;
+	width  : 95%;
+	margin: auto;
+}
+@media screen and (min-width: 750px) {
+	html {
+		background: url("nature-953265_1920.jpg") no-repeat center center fixed;
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+	.main-container {
+		margin-top : 40px;
+	}
+	.controlContainer {
+		float: left;
+		width: 50%;
+		height: 700px;
+	}
+	#output,
+	.demoContainer {
+		display: inline-block;
+		float: right;
+		width: 49%
+	}
+	.demoContainer {
+		height: 300px;
+		margin: 20px auto;
+	}
+	.back-cover {
+		position: fixed;
+		width: 90%;
+		max-width: 1400px;
+		min-width: 1200px;
+		height: 100%;
+		left: 0; right: 0;
+		top: 0; bottom: 0;
+		margin: auto;
+		background: rgba(255,255,255,0.1);
+		z-index: -10;
+	}
+}
+/****************************************************************/
+/***********               Demo                       ***********/
+.demo,
+.tri-inner {
+	box-sizing : content-box;
+	width : 0px;
+	height : 0px;
+	border-style: solid;
+}
+
+/****************************************************************/
+/***********             Control Style                ***********/
+.control-form fieldset {
+	width: 95%;
+	border-radius: 10px;
+	margin: 20px auto;
+	box-shadow: 3px 3px 10px 0px black;
+	background: white;
+	opacity: 0.9;
+}
+.control-form fieldset h5 {
+	height: 35px;
+	padding-left: 20px;
+	font : bold 28px/35px "Time new roman";
+}
+.compact-range .input-ui {
+	width : 40%;
+}
+.color-selector {
+	margin: 5px 0;
+}
+@media screen and (max-width: 750px) {
+	.input-item {
+		margin: 5px 0;
+	}
+	.range-number .input-ui {
+		margin-top: 5px;
+	}
+}
+/****************************************************************/
+/***********               Radio Panel                ***********/
+.radio-list fieldset {
+	border: none;
+	margin: 0 auto;
+	text-align: center;
+	box-shadow: none;
+}
+.radio-list fieldset div {
+	display: inline-block;
+	width: 45%;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.radio-list label {
+	white-space: nowrap;
+}
+/****************************************************************/
+/***********             Output Panel                ***********/
+#output {
+	border : 2px solid black;
+	border-radius: 10px;
+	overflow: auto;
+	padding: 20px;
+	box-shadow: 3px 3px 10px 0px black;
+	background: white;
+	opacity: 0.9;
+	display: table;
+}
+#output-container {
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
+}
+#output p {
+	white-space: pre-wrap;
+	text-indent: 2em;
+}
+#output .css-title {
+	text-indent: 0;
+}
+
+
+/****************************************************************/
+/***********             Slider Format                ***********/
+input[type="range"] {
+    -webkit-appearance:none;
+    background:inherit;
+    width:300px;
+    height:25px;
+}
+input[type="range"]:focus{
+    outline:none;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+    cursor:pointer;
+    width:300px;
+    height:13px;
+    background:rgba(255,200,0,0.500);
+    box-shadow: inset 0px 0px 6px 0px rgba(0,6,59,0.800);
+    border: 0.5px solid #000000;
+    border-radius:20px;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track{
+    background:rgba(255,200,0,0.500);
+}
+input[type="range"]::-moz-range-track{
+    cursor:pointer;
+    width:300px;
+    height:13px;
+    background:rgba(255,200,0,0.500);
+    box-shadow: inset 0px 0px 6px 0px rgba(0,6,59,0.800);
+    border: 0.5px solid #000000;
+    border-radius:20px;
+}
+input[type="range"]::-ms-track{
+    width:100%;
+    cursor:pointer;
+    background:transparent;
+    border-color:transparent;
+    color:transparent;
+    height:13px;
+}
+input[type="range"]::-ms-fill-lower{
+    background:rgba(255,200,0,0.500);
+    box-shadow: inset 0px 0px 6px 0px rgba(0,6,59,0.800);
+    border: 0.5px solid #000000;
+    border-radius:20px;
+}
+input[type="range"]::-ms-fill-upper{
+    background:rgba(255,200,0,0.500);
+    box-shadow: inset 0px 0px 6px 0px rgba(0,6,59,0.800);
+    border: 0.5px solid #000000;
+    border-radius:20px;
+}
+input[type="range"]:focus::-ms-fill-lower{
+    background:rgba(255,200,0,0.500);
+}
+input[type="range"]:focus::-ms-fill-lower{
+    background:rgba(255,200,0,0.500);
+}
+input[type="range"]::-webkit-slider-thumb{
+    cursor:pointer;
+    -webkit-appearance:none;
+    width:32px;
+    height:25px;
+    background:#FF6A00;
+    box-shadow: inset 0px 0px 6px 0px #000000;
+    border: 1px solid #000000;
+    border-radius:50%;
+}
+input[type="range"]::-moz-range-thumb{
+    cursor: pointer;
+    width:32px;
+    height:25px;
+    background:#FF6A00;
+    box-shadow: inset 0px 0px 6px 0px #000000;
+    border: 1px solid #000000;
+    border-radius:50%;
+}
+input[type="range"]::-ms-thumb{
+    cursor: pointer;
+    width:32px;
+    height:25px;
+    background:#FF6A00;
+    box-shadow: inset 0px 0px 6px 0px #000000;
+    border: 1px solid #000000;
+    border-radius:50%;
+}
+input[type="range"]::-webkit-slider-thumb{
+    margin-top:-6.5px;
+}

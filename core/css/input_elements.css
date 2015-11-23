@@ -1,0 +1,299 @@
+/****************************************************************/
+/***********                Inputs                    ***********/
+
+/***********                Generals                  ***********/
+.input-item {
+	position : relative;
+	margin : 20px auto;
+}
+.input-item label {
+	padding-left: 5%;
+	font: bold 22px/30px "Courier New";
+}
+.input-item input,
+.input-item select,
+.input-item .input-unit-fixed {
+	font : 20px/30px "Arial";
+}
+.hidden-input {
+	display: none;
+}
+/***********                range number              ***********/
+.range-number label,
+.range-number .field-container,
+.range-number .input-field,
+.range-number .input-unit,
+.range-number .input-unit-fixed {
+	display: inline-block;
+	vertical-align: middle;
+	height: 30px;
+	background: inherit;
+}
+.range-number .label-field-container {
+	height: 30px;
+}
+.range-number label {
+	width: 50%;
+	white-space: nowrap;
+	float: left;
+}
+.range-number .field-unit-container {
+	text-align: right;
+	width:50%;
+	float: right;
+}
+.range-number .input-field {
+	border : none;
+	width : 30%;
+	min-width: 60px;
+	text-align: right;
+	background: white;
+	border-radius: 5px;
+}
+.range-number .input-unit,
+.range-number .input-unit-fixed {
+	width : 20%;
+	min-width: 30px;
+	text-align: left;
+}
+.range-number .input-unit {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding-left: 5px;
+	border : 1px solid grey;
+	border-radius: 5px;
+}
+.range-number .input-unit:focus {
+	outline: none;
+}
+.range-number .input-ui {
+	display: block;
+	margin : 0 auto;
+	width : 60%;
+	margin-top: 20px;
+}
+
+/* Compact Range Style */
+.compact-range {
+	position: relative;
+}
+.compact-range .input-ui{
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	margin: auto;
+}
+
+/***********                range slider              ***********/
+input[type=range] {
+  -webkit-appearance: none;
+  background: inherit;
+  width: 100%;
+  margin: -0.05px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 20.1px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #ffffd6;
+  border-radius: 25px;
+  border: 0px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 1.9px rgba(0, 0, 62, 0.67), 0px 0px 0px rgba(0, 0, 88, 0.67);
+  border: 1.9px solid rgba(0, 30, 0, 0.57);
+  height: 20px;
+  width: 32px;
+  border-radius: 50px;
+  background: #ffbe00;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: 0.05px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ffffd6;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 20.1px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #ffffd6;
+  border-radius: 25px;
+  border: 0px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 1.9px rgba(0, 0, 62, 0.67), 0px 0px 0px rgba(0, 0, 88, 0.67);
+  border: 1.9px solid rgba(0, 30, 0, 0.57);
+  height: 20px;
+  width: 32px;
+  border-radius: 50px;
+  background: #ffbe00;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 20.1px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #ffffd6;
+  border: 0px solid #010101;
+  border-radius: 50px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #ffffd6;
+  border: 0px solid #010101;
+  border-radius: 50px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 1.9px rgba(0, 0, 62, 0.67), 0px 0px 0px rgba(0, 0, 88, 0.67);
+  border: 1.9px solid rgba(0, 30, 0, 0.57);
+  width: 32px;
+  border-radius: 50px;
+  background: #ffbe00;
+  cursor: pointer;
+  height: 20px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #ffffd6;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ffffd6;
+}
+
+
+
+/***********               color selector             ***********/
+.color-selector {
+	padding: 20px 0;
+}
+.color-selector label,
+.color-selector .input-field,
+.color-selector .input-ui {
+	display: inline-block;
+	vertical-align: middle;
+}
+.color-selector label {
+	width: 50%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.color-selector .color-popup {
+	width : 60px;
+	height : 30px;
+	border : 1px solid black;
+	border-radius: 5px;
+}
+.color-selector .input-field {
+	width : 100px;
+	height : 30px;
+	background : inherit;
+	text-align: right;
+}
+
+
+
+/***********              checkbox-input              ***********/
+.checkbox-input .checkbox-container,
+.checkbox-input .checkbox-layout {
+	display: inline-block;
+	vertical-align: middle;
+	height: 30px;
+}
+.checkbox-input {
+	text-align: center;
+}
+.checkbox-input .checkbox-container {
+	position : relative;
+	width: 80px;
+}
+.checkbox-input label {
+	padding-left : 0;
+	font : 20px/25px "Arial";
+	width: 35%;
+}
+.checkbox-input .checkbox-layout:nth-child(1) {
+	text-align: right;
+}
+.checkbox-input .checkbox-layout:nth-child(2) {
+	text-align: center;
+	width: 30%;
+}
+.checkbox-input .checkbox-layout:nth-child(3) {
+	text-align: left;
+}
+
+/***********              checkbox                    ***********/
+.checkbox-input .input-ui {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 26px;
+	background: #333;
+	margin: 0 auto;
+
+	border-radius: 50px;
+	position: relative;
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+input[type='checkbox']:focus {
+	outline: none;
+}
+.checkbox-input .input-ui + div {
+	display: block;
+	width: 34px;
+	height: 20px;
+
+	border-radius: 50px;
+
+	-webkit-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	z-index: 1;
+
+	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	background: #fcfff4;
+
+	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+}
+
+.checkbox-input .input-ui:checked + div {
+	left: 43px;
+}
+
+
+/***********              select-list                  ***********/
+.select-list {
+	padding: 20px 0;
+}
+.select-list .input-ui {
+	border-radius: 5px;
+	width: 120px;
+	text-indent: 0.01px;
+	padding-left : 1em;
+	border: 1px solid #107177;
+	text-transform: capitalize;
+}
+.select-list .input-ui:focus {
+	outline: none;
+}
+
+/***********              radio-list                  ***********/
+.radio-list label {
+	padding-left: 30px; 
+}

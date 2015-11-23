@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo</title>
+	<script type="text/javascript">
+	var formLinkerRootDir = 'E:/Study of CS/htmlcss/practice/FormLinker/';
+	</script>
+	<script src="D:/Software/jquery/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/ColorPickerUtility.js"></script>
+	<script src="js/setDragable.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="colorpicker.css"> </link> -->
+	<style>
+		
+	</style>
+</head>
+<body>
+	<section class="colorPickerPopUp" style="margin:30px"> </section>
+	<input class="colorpicker" type="button" name="show" value="show" style="width:100px;height:100px" />
+	<input class="colorpicker" type="button" name="show" value="show" style="width:100px;height:100px" />
+	<script>
+		"use strict"; /*global console*/
+		$(document).ready(function(){
+			$(".colorpicker").addPopUpColorPicker({
+				callback : function(color) {
+					console.log(color);
+				}
+			}).setColor("#000000");
+			$(window).click(
+				function(){
+					$(".colorpicker").each(function(index){
+						console.log(index,$(this).getColor());
+					});
+				}
+			);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<div id="color_picker_custom" class="color_picker_style_base">
+	<div id="plane">
+		<div id="demoContainer">
+			<div id="color_demo"></div>
+		</div>
+		<div id="formContainer">
+			<form id="colorInput" action="demo_submit" method="get" accept-charset="utf-8">
+				<fieldset id="f_hsv">
+					<!-- <legend>HSV/HSB</legend> -->
+					<label>H : </label><input class="inputValue" type="number" name="h" min=0 max=360 step=30 size=1/>&deg;<br>
+					<label>S : </label><input class="inputValue" type="number" name="s" min=0 max=100 step=10 size=1/>%<br>
+					<label>V : </label><input class="inputValue" type="number" name="v" min=0 max=100 step=10 size=1/>%
+				</fieldset>
+				<fieldset id="f_rgb">
+					<!-- <legend>RGB</legend> -->
+					<label>R : </label><input class="inputValue" type="number" name="r" min="0" max="255" step="10" size="1"><br>
+					<label>G : </label><input class="inputValue" type="number" name="g" min="0" max="255" step="10" size="1"><br>
+					<label>B : </label><input class="inputValue" type="number" name="b" min="0" max="255" step="10" size="1">
+				</fieldset>
+				<fieldset id="f_hex">
+					<!-- <legend>HEX</legend> -->
+					<label># </label><input id="hex_input" type="text" name="hex" maxlength=6 size="6">
+				</fieldset>
+			</form>
+		</div>
+	
+		<div id="color_map_input">
+			<div id="color_map_wraper">
+				<div id="color_map">
+					<div id="color_map_background"></div>
+					<img src="map-hue.png" alt="color-map-image" style="max-width:256px;max-height:256px"/>
+				</div>
+				<div id="color_map_pointer"></div>
+			</div>
+		</div>
+		<div id="color_bar_input">
+			<div id="color_bar_wraper">
+				<div id="color_bar"></div>
+				<div id="color_bar_pointer"></div>
+			</div>
+		</div>
+	</div>	
+</div>
