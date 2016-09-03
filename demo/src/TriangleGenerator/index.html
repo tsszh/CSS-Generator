@@ -3,8 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Triangle Generator</title>
-	<link rel="stylesheet" href="../../core/css/input_elements.css" />
-	<link rel="stylesheet" href="triangle-generator.css"/>
+	<link rel="stylesheet" href="../../../core/css/input_elements.css" />
+	<link rel="stylesheet" href="style.css"/>
+	<script src="../../lib/jquery.v1.11.3.min.js"></script>
+	<script src="../../lib/form-linker.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 <div class="back-cover"></div>
@@ -16,7 +18,7 @@
 	</section>
 	<section class="controlContainer">
 		<form class="control-form">
-			
+
 			<fieldset>
 				<h5>Dimension</h5><hr/>
 				<div class="input-item range-number compact-range clear-fix">
@@ -139,7 +141,7 @@
 					<input type="text" class="input-field hidden-input" name="isRightAngleValue">
 				</div>
 			</fieldset>
-		</form>	
+		</form>
 	</section>
 	<section id="output">
 		<div id="output-container">
@@ -162,12 +164,6 @@
 			<p class="css-title">}</p>
 		</div>
 	</section>
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script type="text/javascript" src="../../core/js/form-linker-core.js"></script>
-	<script type="text/javascript" src="../../core/js/ColorPickerUtility.js"></script>
-	<script type="text/javascript" src="../../core/js/setDragable.js"></script>
 	<script type="text/javascript">
 		/* global StyleForm : false */
 		"use strict";
@@ -245,16 +241,16 @@
 				});
 			}
 			function outerTriCal ( form, name ) {
-				var height = parseFloat(form.styleValueLog["height"]), 
-					width  = parseFloat(form.styleValueLog["width"]),
+				var height = form.styleValueLog["height"],
+					width  = form.styleValueLog["width"],
 					h2wRatio = 0.866025403784;
 				if ( form.styleValueLog["isSymmetry"] ) {
-					if ( name === "width" || (name==="isSymmetry"&&width<height)) 
-						height = parseFloat(( (direction<4)?width*h2wRatio:width ).toFixed(2));
+					if ( name === "width" || (name==="isSymmetry"&&width<height))
+						height = parseFloat( (direction<4)?width*h2wRatio:width ).toFixed(2);
 					else
-						width  = parseFloat(( (direction<4)?height/h2wRatio:height ).toFixed(2));
-					form.setStyleValue("width",parseFloat(width),false);
-					form.setStyleValue("height",parseFloat(height),false);
+						width  = parseFloat( (direction<4)?height/h2wRatio:height ).toFixed(2);
+					form.setStyleValue("width",width,false);
+					form.setStyleValue("height",height,false);
 				}
 				return {
 					"height" : height,
@@ -265,7 +261,7 @@
 				var h2wRatio = height/width;
 				var topM = direction<4? Math.sqrt(1+Math.pow(2*h2wRatio,2)):
 										(h2wRatio+Math.sqrt(1+Math.pow(h2wRatio,2)));
-				var h = height - ( 1 + topM ) * border;	
+				var h = height - ( 1 + topM ) * border;
 				var w = width/height*h;
 				var mTop = 0,
 					mLeft= 0;
@@ -288,9 +284,9 @@
 				return {
 					"height" : h,
 					"width" : w,
-					"margin": mTop+"px 0 0 "+mLeft+"px" 
+					"margin": mTop+"px 0 0 "+mLeft+"px"
 				};
-				
+
 			}
 			function changeOutputFormat ( isSimple ) {
 				if ( isSimple ) {
@@ -338,6 +334,9 @@
 				rDMap = [["bottom"],["left"],["top"],["right"],
 					["bottom","left"],["top","left"],["top","right"],["bottom","right"]];
 			return function(form,name,value) {
+					if (name === "width" || name === "height") {
+						value = parseFloat(value)
+					}
 					switch ( name ) {
 						case "triDirection":
 							// clear previous setting
@@ -432,7 +431,6 @@
 					updateOutput();
 				};
 		})();
-		
 
 		$(document).ready(function(){
 			new StyleForm( $("form").get(0), styleFormSetting, updateDemo );

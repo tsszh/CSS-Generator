@@ -176,7 +176,7 @@ StyleForm.prototype = (function(){
 			if ( currentUnit === "none" ) currentUnit = "";
 			if ( currentUnit !== unit ) { // Unit Changed
 				inputUnitTarget.val(unit);
-				updateUnits(form,inputUnitTarget,unit);	
+				updateUnits(form,inputUnitTarget,unit);
 			}
 		}
 		// Update The Value
@@ -250,7 +250,7 @@ StyleForm.prototype = (function(){
 					// Create option item for previous select list
 					$.each(range,function(unitName,unitRange){
 						unitInput.append(
-							$("<option>").attr({ 
+							$("<option>").attr({
 								"value": unitName,
 								"min" : unitRange[0],
 								"max" : unitRange[1],
@@ -324,7 +324,7 @@ StyleForm.prototype = (function(){
 			}
 		});
 
-		// Initialize the value			
+		// Initialize the value
 		restoreStyleFromLog(form,form.defaultStyleLog);
 	}
 	};
@@ -367,3 +367,7 @@ StyleFormDataBase.prototype = {
 		}
 	}
 };
+
+window.StyleFormUtility = StyleFormUtility
+window.StyleForm = StyleForm
+window.StyleFormDataBase = StyleFormDataBase

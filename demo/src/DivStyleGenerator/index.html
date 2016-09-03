@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Div Style Generator</title>
+	<link rel="stylesheet" href="../../../core/css/input_elements.css" />
+	<link rel="stylesheet" href="style.css"/>
+	<script src="../../lib/jquery.v1.11.3.min.js"></script>
+	<script src="../../lib/form-linker.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<section class="main-container">
+
+	<section class="demo-styleform">
+		<div class="col-left">
+			<nav>
+				<ul class="switch-tabs">
+					<a class="switch-tab selected-tab" target="#style-border"><li>Border</li></a><!--
+				 --><a class="switch-tab" target="#style-dimension"><li>Dimension</li></a><!--
+				 --><a class="switch-tab" target="#style-shadow"><li>Shadow</li></a>
+				</ul>
+			</nav>
+			<form class="style-form-base" action="#" method="get" accept-charset="utf-8">
+				<!-- ********** Dimension ********** -->
+				<section id="style-dimension" class="style-panel">
+					<fieldset>
+						<div class="input-item color-selector clear-fix">
+							<label>Background Color</label>
+							<input type="text" class="input-field hex-color" name="backgroundColorValue"/>
+							<div class="input-ui color-popup" name="backgroundColor"></div>
+						</div>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Background Color Opacity</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="backgroundColorOpacityValue" />
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="backgroundColorOpacity"/>
+						</div>
+						<!-- Width -->
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Width</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="widthValue" />
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="width" />
+						</div>
+						<!-- Height -->
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Height</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="heightValue" />
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="height" />
+						</div>
+						<!-- Padding -->
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Padding</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="paddingValue" />
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="padding" />
+						</div>
+					</fieldset>
+				</section>
+				<!-- ********** SHADOW ********** -->
+				<section id="style-shadow" class="style-panel">
+					<fieldset>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Shadow Horizontal Shift</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="shadowHShiftValue"/>
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="shadowHShift"/>
+						</div>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Shadow Vertical Shift</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="shadowVShiftValue"/>
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="shadowVShift"/>
+						</div>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Shadow Blur Radius</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="shadowBlurRadiusValue"/>
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="shadowBlurRadius"/>
+						</div>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Shadow Spread Radius</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="shadowSpreadRadiusValue"/>
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="shadowSpreadRadius"/>
+						</div>
+						<div class="input-item color-selector clear-fix">
+							<label>Shadow Color</label>
+							<input type="text" class="input-field hex-color" name="shadowColorValue"/>
+							<div class="input-ui color-popup" name="shadowColor"></div>
+						</div>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Shadow Color Opacity</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="shadowColorOpacityValue"/>
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="shadowColorOpacity"/>
+						</div>
+						<div class="input-item checkbox-input clear-fix">
+							<!-- shadow inset or outset -->
+							<label class="checkbox-layout">Outset</label><!--
+							--><div class="checkbox-layout">
+								<div class="checkbox-container">
+									<input type="checkbox" class="input-ui" name="shadowInset">
+									<div></div>
+								</div>
+							</div><!--
+							--><label class="checkbox-layout">Inset</label>
+							<input type="text" class="input-field hidden-input" name="shadowInsetValue">
+						</div>
+					</fieldset>
+				</section>
+				<!-- ********** BORDER ********** -->
+				<section id="style-border" class="style-panel selected-style-panel">
+					<fieldset>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Border Radius</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="borderRadiusValue" />
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="borderRadius" />
+						</div>
+						<div class="input-item select-list clear-fix">
+							<label>Border Style</label>
+							<select class="input-ui" name="borderStyle">
+								<option value="none">none</option>
+								<option value="dotted">dotted</option>
+								<option value="dashed">dashed</option>
+								<option value="solid">solid</option>
+								<option value="double">double</option>
+								<option value="groove">groove</option>
+								<option value="ridge">ridge</option>
+								<option value="inset">inset</option>
+								<option value="outset">outset</option>
+							</select>
+							<input type="text" class="input-field hidden-input" name="borderStyleValue"/>
+						</div>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Border Width</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="borderWidthValue"/>
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="borderWidth"/>
+						</div>
+						<div class="input-item color-selector clear-fix">
+							<label>Border Color</label>
+							<input type="text" class="input-field hex-color" name="borderColorValue"/>
+							<div class="input-ui color-popup" name="borderColor"></div>
+						</div>
+						<div class="input-item range-number clear-fix">
+							<div class="label-field-container clear-fix">
+								<label>Border Color Opacity</label>
+								<div class="field-unit-container">
+									<input type="number" class="input-field" name="borderColorOpacityValue"/>
+								</div>
+							</div>
+							<input type="range" class="input-ui" name="borderColorOpacity"/>
+						</div>
+					</fieldset>
+				</section>
+			</form>
+		</div><!--
+		--><div class="col-right">
+			<section class="demoContainer">
+				<div class="demo absolute-center" id="demo"><span class="demo-test absolute-center">SAMPLE</span></div>
+			</section>
+			<section class="button-panel">
+				<input id="get-current-style" type="button" value="Current" /><!--
+				--><input id="reset-style" type="button" value="Reset" /><!--
+				--><input id="save-current-style" type="button" value="Save" /><!--
+				--><input id="clean-saved-styles" type="button" value="CleanAll">
+			</section>
+			<section class="result-display">
+				<section class="saved-demo-section"> </section>
+				<section class="output-panel">
+					<div id="text-out"> </div>
+				</section>
+			</section>
+
+		</div>
+	<script>
+		"use strict"; /*global console,StyleForm,StyleFormDataBase,StyleFormUtility*/
+		var styleFormSetting = {
+			"backgroundColor" : {
+				"type" : "color-selector",
+				"value" : "#FFEA00",
+				"unit" : null,
+				"range" : null
+			},
+			"backgroundColorOpacity" : {
+				"type" : "range-number",
+				"value" : 1,
+				"unit" : null,
+				"range" : {
+					"none" : [0,1,0.05]
+				}
+			},
+			"width" : {
+				"type" : "range-number",
+				"value" : "200",
+				"unit" : "px",
+				"range" : {
+					"px" : [0,350]
+				}
+			},
+			"height" : {
+				"type" : "range-number",
+				"value" : "50",
+				"unit" : "px",
+				"range" : {
+					"px" : [0,250]
+				}
+			},
+			"padding" : {
+				"type" : "range-number",
+				"value" : "0",
+				"unit" : "px",
+				"range" : {
+					"px" : [0,100]
+				}
+			},
+			"shadowHShift" : {
+				"type" : "range-number",
+				"value" : "5",
+				"unit" : "px",
+				"range" : {
+					"px" : [-250,250]
+				}
+			},
+			"shadowVShift" : {
+				"type" : "range-number",
+				"value" : "5",
+				"unit" : "px",
+				"range" : {
+					"px" : [-150,150]
+				}
+			},
+			"shadowBlurRadius" : {
+				"type" : "range-number",
+				"value" : "5",
+				"unit" : "px",
+				"range" : {
+					"px" : [0,100]
+				}
+			},
+			"shadowSpreadRadius" : {
+				"type" : "range-number",
+				"value" : "0",
+				"unit" : "px",
+				"range" : {
+					"px" : [-150,150]
+				}
+			},
+			"shadowColor" : {
+				"type" : "color-selector",
+				"value" : "#000000",
+				"unit" : null,
+				"range" : null
+			},
+			"shadowColorOpacity" : {
+				"type" : "range-number",
+				"value" : 1,
+				"unit" : null,
+				"range" : {
+					"none" : [0,1,0.05]
+				}
+			},
+			"shadowInset" : {
+				"type" : "checkbox-input",
+				"value": false,
+				"unit" : null,
+				"range" : null
+			},
+			"borderRadius" : {
+				"type" : "range-number",
+				"value" : "20",
+				"unit" : "%",
+				"range" : {
+					"%" : [0,50,1],
+					"px" : [0,150]
+				}
+			},
+			"borderStyle" : {
+				"type" : "select-list",
+				"value" : "solid",
+				"unit" : null,
+				"range" : null
+			},
+			"borderWidth" : {
+				"type" : "range-number",
+				"value" : "10",
+				"unnit" : "px",
+				"range" : {
+					"px" : [0,30,0.5]
+				}
+			},
+			"borderColor" : {
+				"type" : "color-selector",
+				"value" : "#FF7B00",
+				"unit" : null,
+				"range" : null
+			},
+			"borderColorOpacity" : {
+				"type" : "range-number",
+				"value" : 1,
+				"unit" : null,
+				"range" : {
+					"none" : [0,1,0.05]
+				}
+			}
+		};
+		var logMsg = ["","0px","0px","0px","0px","#FF00FF"];
+		var updateDemo = function(form,name,value){
+			// Get CSS Value
+			if ( /^shadow/.test(name) ) {
+				switch ( name ) {
+					case "shadowInset" :
+						logMsg[0] = value?"inset":"";
+						break;
+					case "shadowHShift" :
+						logMsg[1] = value + "px";
+						break;
+					case "shadowVShift" :
+						logMsg[2] = value + "px";
+						break;
+					case "shadowBlurRadius" :
+						logMsg[3] = value + "px";
+						break;
+					case "shadowSpreadRadius" :
+						logMsg[4] = value + "px";
+						break;
+					default :
+						logMsg[5] = StyleFormUtility.hexToRGBA( form.styleValueLog["shadowColor"], form.styleValueLog["shadowColorOpacity"] );
+				}
+				name = "box-shadow";
+				value = logMsg.join(" ");
+			}
+			else if ( name.search("Color") >= 0 ) {
+				name = name.replace(/Opacity$/,"");
+				value = StyleFormUtility.hexToRGBA( form.styleValueLog[name], form.styleValueLog[name+"Opacity"] );
+				name = name.replace(/^(.*)Color/,"$1-color");
+			} else {
+				value = value+form.styleUnitLog[name];
+				name = name.replace(/([A-Z])/g,"-$1").toLowerCase();
+			}
+			// Get CSS Name
+			$(demo).css(name,value);
+			$("#text-out").html(logToString(form.styleLog))
+		};
+		var logToString = function( styleLog ) {
+			var values = styleLog['value'],
+				units  = styleLog['unit'],
+				str = [
+					"border : "+values["borderWidth"]+"px "+values["borderStyle"]+" "+StyleFormUtility.hexToRGBA(values["borderColor"],values["borderColorOpacity"] ),
+					"box-shadow : "+logMsg.join(" "),
+					"border-radius : "+values["borderRadius"]+units["borderRadius"],
+					"background-color : "+ StyleFormUtility.hexToRGBA(values["backgroundColor"],values["backgroundColorOpacity"] ),
+					"width : "+values["width"],
+					"height : "+values["height"],
+				];
+			return str.join("<br/>");
+		}
+		$(document).ready(function(){
+			$(".switch-tabs").on("click","a",function(event){
+				$(".selected-style-panel").removeClass("selected-style-panel");
+				$(event.delegateTarget).children().removeClass("selected-tab");
+				$(this).addClass("selected-tab");
+				$($(this).attr("target")).addClass("selected-style-panel");
+			});
+			$(".saved-demo-section").click(function(){
+				$(".output-panel").css("z-index",10);
+				$(this).css("z-index",11);
+			});
+			$(".output-panel").click(function(){
+				$(".saved-demo-section").css("z-index",10);
+				$(this).css("z-index",11);
+			});
+
+			var form = $(".style-form-base")[0],
+				demo = $("#demo")[0];
+			var	styleForm = new StyleForm(form,styleFormSetting,updateDemo),
+				styleFormDataBase = new StyleFormDataBase(styleForm),
+				savedDemo = $(".saved-demo-section").eq(0);
+
+
+			$("#get-current-style").click(function(){
+				// console.log(styleForm.exportStyle());
+				$(".saved-demo-section").css("z-index",10);
+				$(".output-panel").css("z-index",11);
+			});
+			$("#reset-style").click(function(){
+				styleForm.resetStyle();
+			});
+			$("#save-current-style").click(function(){
+				var savedStyleLog = styleFormDataBase.saveCurrentStyle()['value'];
+				var demoCon = $("<div class='saved-demo'>").appendTo(savedDemo);
+				$("<div>").css({
+						"border-style" : savedStyleLog["borderStyle"],
+						"border-color" : StyleFormUtility.hexToRGBA( savedStyleLog['borderColor'], savedStyleLog["borderColorOpacity"] ),
+						"border-width" : Math.min(10,savedStyleLog["borderWidth"])+"px",
+						"background-color" : StyleFormUtility.hexToRGBA( savedStyleLog['backgroundColor'], savedStyleLog["backgroundColorOpacity"] ),
+					}).appendTo(demoCon);
+			});
+			$("#clean-saved-styles").click(function(){
+				styleFormDataBase.deleteStyleLog();
+				savedDemo.empty();
+			});
+			$(savedDemo).on("click",".saved-demo",function(){
+				styleFormDataBase.openStyleLog($(".saved-demo-section .saved-demo").index(this));
+			});
+		});
+
+	</script>
+</body>
+</html>
