@@ -1,5 +1,5 @@
 "use strict";
-var formLinkerRootDir = "../../core/";
+var formLinkerRootDir = "../../../core/";
 var ColorPickerUtility = {
 	// color form utility methods
 	colorFormInputHandler : function(event,inputField){
@@ -53,7 +53,7 @@ var ColorPickerUtility = {
 			if ( inputSet !== "f_rgb" ) {
 				this.elements["r"].value = hex>>>16&0xff;
 				this.elements["g"].value = hex>>>8&0xff;
-				this.elements["b"].value = hex&0xff;	
+				this.elements["b"].value = hex&0xff;
 			}
 			if ( inputField ) inputSet = inputField;
 			if ( inputSet !== "f_colorbar" ) {
@@ -182,7 +182,7 @@ var ColorPickerUtility = {
 			g = (hex>>>8&0xFF)/255,
 			b = (hex&0xFF)/255,
 			cmax = Math.max(r,g,b),
-			cmin = Math.min(r,g,b), 
+			cmin = Math.min(r,g,b),
 			diff = cmax-cmin,
 			hsv = {
 				h : 0,
@@ -375,7 +375,7 @@ $.fn.extend({
 					updateColor();
 				});
 			}
-			return this;			
+			return this;
 		};
 	})(),
 	getColor : function() {

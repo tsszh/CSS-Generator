@@ -1,0 +1,188 @@
+*,
+*::before,
+*::after {
+	box-sizing : border-box;
+	padding : 0;
+	margin : 0;
+}
+.absolute-center {
+	position : absolute;
+	top : 0; bottom: 0; left : 0; right : 0;
+	margin: auto;
+}
+.clear-fix::before,
+.clearfix::after {
+	content : "";
+	display : table;
+	clear : both;
+}
+
+/****************************************************************/
+/*                     Layout                                   */
+/****************************************************************/
+html {
+	background: url("world-991082_1920.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+.main-container {
+	min-width : 1000px;
+	max-width: 1500px;
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	margin-top : 40px;
+}
+.demo-styleform {
+	width : 100%;
+	height : 800px;
+}
+.col-left, .col-right {
+	height: 100%;
+	float : left;
+	width: 50%;
+}
+/****************************************************************/
+/***********               Demo                       ***********/
+.demoContainer {
+	height : 40%;
+	width  : 100%;
+	position : relative;
+	background: lightyellow;
+	border : 2px solid black;
+}
+.demo {
+	width : 200px;
+	height : 30px;
+	border : 1px solid black;
+	background: pink;
+}
+.demo-test {
+	display: table;
+	background: transparent;
+	text-align: center;
+	width : 100%;
+}
+/****************************************************************/
+/***********               Nav Tabs                   ***********/
+.demo-styleform nav {
+	height: 10%;
+}
+.switch-tabs {
+	height: 100%;
+	list-style: none;
+	margin : 0;
+	background: black;
+	color : white;
+	font : bold italic 30px/60px "Time new romans";
+}
+.switch-tab {
+	display : inline-block;
+	width : 33.333333%;
+	text-align: center;
+	text-decoration : none;
+	height: 100%;
+}
+.switch-tab:visited {
+	color : inherit;
+}
+.switch-tab:not(:last-child) {
+	border-right: 2px solid #E8E8E8;
+}
+.switch-tabs .selected-tab {
+	border-top : 5px solid black;
+	background: #E8E8E8;
+	color : black;
+}
+/****************************************************************/
+/***********             Style Form Panel             ***********/
+.style-form-base {
+	position: relative;
+	overflow: hidden;
+	height : 90%;
+}
+.style-panel {
+	position: absolute;
+	top : 0; left : 0;
+	background: #E8E8E8;
+	width : 100%;
+	height : 100%;
+	padding : 5%;
+	font : bold 25px/30px "Courier New";
+	z-index: 10;
+}
+.selected-style-panel {
+	z-index : 11;
+}
+/****************************************************************/
+/***********               Button Panel               ***********/
+.button-panel {
+	width : 100%;
+	height: 8%;
+	padding-top: 10px;
+}
+.button-panel input {
+	display: inline-block;
+	height: 60%;
+	width : 23%;
+	margin: 1%;
+	box-shadow: 0 4px 3px rgba(0,0,0,0.9);
+	-webkit-transition: all .01s linear;
+	-o-transition: all .01s linear;
+	transition: all .01s linear;
+}
+.button-panel input:active {
+	box-shadow: 0 4px 3px rgba(0,0,0,0.9);
+	-webkit-transform: translateY(2px);
+	-ms-transform: translateY(2px);
+	-o-transform: translateY(2px);
+	transform: translateY(2px);
+}
+/****************************************************************/
+/***********               result-display             ***********/
+.result-display {
+	position: relative;
+	height : 52%;
+}
+.saved-demo-section,
+.output-panel {
+	position: absolute;
+	width: 100%;
+	height: 80%;
+}
+/****************************************************************/
+/***********               Demo Panel                 ***********/
+.saved-demo-section {
+	border: 3px solid black;
+	padding: 5px;
+	border-radius: 10px;
+	background: white;
+}
+.saved-demo {
+	display: inline-block;
+	width: 10%;
+	position: relative;
+	margin: 0 2%; 
+}
+.saved-demo::before {
+	content : "";
+	display : block;
+	padding-top: 100%;
+}
+.saved-demo div {
+	position: absolute;
+	top: 0;	right: 0; bottom: 0; left: 0;
+	border-radius: 50%;
+}
+/****************************************************************/
+/***********               Output Panel               ***********/
+.output-panel {
+	top: 20%;
+	padding-top : 100px;
+	padding-left : 10px;
+	border: 3px solid black;
+	border-radius: 10px;
+	background: white;
+}
+#text-out {
+	font : bold 16px/20px "Courier New";
+}

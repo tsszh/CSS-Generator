@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Slider Generator</title>
+	<link rel="stylesheet" href="../../../core/css/input_elements.css" />
+	<link rel="stylesheet" href="style.css"/>
+	<script src="../../lib/jquery.v1.11.3.min.js"></script>
+	<script src="../../lib/form-linker.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		#demo {
+		  -webkit-appearance: none;
+		  background: inherit;
+		  margin: auto;
+		}
+		#demo:focus {
+		  outline: none;
+		}
+	</style>
+	<style id="slider-track-style"></style>
+	<style id="slider-thumb-style"></style>
+	<style id="thubm-center-style"></style>
+</head>
+<body>
+<div class="back-cover"></div>
+<section class="main-container">
+	<section class="demoContainer float-style">
+		<input type="range" class="demo absolute-center" id="demo">
+	</section>
+	<section class="controlContainer">
+		<nav class="target-nav">
+			<ul class="switch-tabs">
+				<div class="switch-tab selected-tab" id="target-track"><li>Track</li></div><!--
+			 --><div class="switch-tab" id="target-thumb"><li>Thumb</li></div>
+			</ul>
+		</nav>
+		<nav class="style-nav">
+			<ul class="switch-tabs">
+				<div class="switch-tab selected-tab" target="#style-dimension"><li>Dimension</li></div><!--
+			 --><div class="switch-tab" target="#style-shadow"><li>Shadow</li></div>
+			</ul>
+		</nav>
+		<form class="control-form">
+			<!-- Background Dimension Border -->
+			<section id="style-dimension" class="style-panel selected-style-panel">
+				<fieldset class="float-style">
+					<p><span class="trackOrThumb"></span>Dimension</p><hr/>
+					<!-- Color -->
+					<div class="input-item color-selector clear-fix">
+						<label>Background Color</label>
+						<input type="text" class="input-field hex-color" name="backgroundColorValue"/>
+						<div class="input-ui color-popup" name="backgroundColor"></div>
+					</div>
+					<div class="input-item range-number compact-range clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Opacity</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="backgroundColorOpacityValue" />
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="backgroundColorOpacity"/>
+					</div>
+					<!-- Width -->
+					<div class="input-item range-number compact-range clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Width</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="widthValue" />
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="width" />
+					</div>
+					<!-- Height -->
+					<div class="input-item range-number compact-range clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Height</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="heightValue" />
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="height" />
+					</div>
+				</fieldset>
+				<fieldset class="float-style">
+					<p><span class="trackOrThumb"></span>Border Style</p><hr/>
+					<div class="input-item range-number clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Border Radius</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="borderRadiusValue" />
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="borderRadius" />
+					</div>
+					<div class="input-item select-list clear-fix">
+						<label>Border Style</label>
+						<select class="input-ui" name="borderStyle">
+							<option value="none">none</option>
+							<option value="dotted">dotted</option>
+							<option value="dashed">dashed</option>
+							<option value="solid">solid</option>
+							<option value="double">double</option>
+							<option value="groove">groove</option>
+							<option value="ridge">ridge</option>
+							<option value="inset">inset</option>
+							<option value="outset">outset</option>
+						</select>
+						<input type="text" class="input-field hidden-input" name="borderStyleValue"/>
+					</div>
+					<div class="input-item range-number compact-range clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Width</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="borderWidthValue"/>
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="borderWidth"/>
+					</div>
+					<div class="input-item color-selector clear-fix">
+						<label>Border Color</label>
+						<input type="text" class="input-field hex-color" name="borderColorValue"/>
+						<div class="input-ui color-popup" name="borderColor"></div>
+					</div>
+					<div class="input-item range-number compact-range clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Opacity</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="borderColorOpacityValue"/>
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="borderColorOpacity"/>
+					</div>
+				</fieldset>
+			</section>
+			<!-- Shadow -->
+			<section id="style-shadow" class="style-panel">
+				<fieldset class="float-style">
+					<p><span class="trackOrThumb"></span>Shadow</p><hr/>
+					<div class="input-item range-number clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Shadow Horizontal Shift</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="shadowHShiftValue"/>
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="shadowHShift"/>
+					</div>
+					<div class="input-item range-number clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Shadow Vertical Shift</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="shadowVShiftValue"/>
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="shadowVShift"/>
+					</div>
+					<div class="input-item range-number clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Shadow Blur Radius</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="shadowBlurRadiusValue"/>
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="shadowBlurRadius"/>
+					</div>
+					<div class="input-item range-number clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Shadow Spread Radius</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="shadowSpreadRadiusValue"/>
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="shadowSpreadRadius"/>
+					</div>
+					<div class="input-item color-selector clear-fix">
+						<label>Shadow Color</label>
+						<input type="text" class="input-field hex-color" name="shadowColorValue"/>
+						<div class="input-ui color-popup" name="shadowColor"></div>
+					</div>
+					<div class="input-item range-number clear-fix">
+						<div class="label-field-container clear-fix">
+							<label>Shadow Color Opacity</label>
+							<div class="field-unit-container">
+								<input type="number" class="input-field" name="shadowColorOpacityValue"/>
+							</div>
+						</div>
+						<input type="range" class="input-ui" name="shadowColorOpacity"/>
+					</div>
+					<div class="input-item checkbox-input clear-fix">
+						<!-- shadow inset or outset -->
+						<label class="checkbox-layout">Outset</label><!--
+						--><div class="checkbox-layout">
+							<div class="checkbox-container">
+								<input type="checkbox" class="input-ui" name="shadowInset">
+								<div></div>
+							</div>
+						</div><!--
+						--><label class="checkbox-layout">Inset</label>
+						<input type="text" class="input-field hidden-input" name="shadowInsetValue">
+					</div>
+				</fieldset>
+			</section>
+		</form>
+	</section>
+	<section id="output" class="float-style">
+		<h6>Click Here To Show Results And Copy To Clipboard </h6>
+		<textarea id="output-container"></textarea>
+	</section>
+</section>
+<script src="sliderGenerator.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

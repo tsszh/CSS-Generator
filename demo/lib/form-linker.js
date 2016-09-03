@@ -1,6 +1,6 @@
 'use strict';
 // The Base Directory of all form-linker related files
-var formLinkerRootDir = '../../lib/FormLinker/';
+var formLinkerRootDir = '../../../core/';
 (function($){
 	var a = false, b = false, c = false;
 	$.holdReady(true);
