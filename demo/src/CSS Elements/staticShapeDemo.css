@@ -1,0 +1,119 @@
+/***************************************************************/
+/*                      Clean Up                               */
+/***************************************************************/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.absolute-center {
+    position: absolute !important;
+    top: 0; right: 0; bottom: 0; left: 0;
+    margin: auto;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+/***************************************************************/
+/*                      Layout                                 */
+/***************************************************************/
+.section-container {
+    width: 100%;
+    min-width: 400px;
+    height: 800px;
+}
+.main-container {
+    height: 100%;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.left-col {
+    display: block;
+    width: 100%;
+    height: 50%;
+}
+.right-col {
+    display: block;
+    width: 100%;
+    height: 50%;
+}
+.demo-container {
+    width: 350px;
+    height: 350px;
+}
+@media screen and (min-width: 800px) {
+    .section-container {
+        height: 500px;
+    }
+    .left-col {
+        width: 60%;
+        height: 100%;
+        float: left;
+    }
+    .right-col {
+        width: 40%;
+        height: 100%;
+        float: right;
+    }
+    .demo-container {
+        width: 400px;
+        height: 400px;
+    }
+}
+@media screen and (min-width: 1300px) {
+    .section-container {
+        height: 600px;
+    }
+    .left-col {
+        width: 50%;
+    }
+    .right-col {
+        width: 50%;
+    }
+    .demo-container {
+        width: 500px;
+        height: 500px;
+    }
+}
+/***************************************************************/
+/*                      Main Style                             */
+/***************************************************************/
+.section-container {
+    font-family: "HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.section-container:nth-of-type(odd) {
+    background: white;
+    color: #3F5688;
+}
+.section-container:nth-of-type(even) {
+    background: #20324A;
+    color: white;
+}
+.left-col {
+    position: relative;
+}
+.demo-container {
+    border: 1px solid black;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 2px 2px 8px 0px black;
+    overflow: hidden;
+}
+.right-col {
+    position: relative;
+}
+.intro-container {
+    width: 80%;
+    height: 80%;
+}

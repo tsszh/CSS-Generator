@@ -1,0 +1,57 @@
+.main-container {
+	width: 100%;
+    padding: 0 5%;
+    background: pink;
+}
+.main-section {
+    display: block;
+    width: 100%;
+    background: lightblue;
+}
+.main-aside {
+    display: block;
+    width: 100%;
+    background: lightyellow;
+}
+@media screen and (min-width: 800px) {
+    .main-container {
+        position: fixed;
+        height: 100%;
+        padding: 0;
+    }
+    .main-section {
+        width: 60%;
+        height: 100%;
+        position: relative;
+        float: right;
+    }
+    .main-aside {
+        width: 40%;
+        height: 100%;
+        float: left;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .main-section {
+        width: 70%;
+    }
+    .main-aside {
+        width: 30%;
+    }
+}
+@media screen and (min-width: 1300px) {
+    .main-section {
+        width: 75%;
+    }
+    .main-aside {
+        width: 25%;
+    }
+}
+@media screen and (min-width: 1500px) {
+    .main-section {
+        width: 80%;
+    }
+    .main-aside {
+        width: 20%;
+    }
+}

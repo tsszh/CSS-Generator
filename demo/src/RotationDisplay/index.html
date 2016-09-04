@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carousel Display</title>
+    <link rel="stylesheet" href="../../../core/css/input_elements.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="../../lib/jquery.v1.11.3.min.js"></script>
+  	<script src="../../lib/form-linker.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<section class="DemoContainer">
+    <div class="carousel-container">
+        <div class="carousel">
+            <figure>1</figure>
+            <figure>2</figure>
+            <figure>3</figure>
+            <figure>4</figure>
+            <figure>5</figure>
+            <figure>6</figure>
+            <figure>7</figure>
+            <figure>8</figure>
+            <figure>9</figure>
+            <figure>10</figure>
+            <figure>11</figure>
+            <figure>12</figure>
+            <figure>13</figure>
+            <figure>14</figure>
+            <figure>15</figure>
+            <figure>16</figure>
+        </div>
+    </div>
+</section>
+<section class="ControlContainer">
+    <form id="controler">
+        <input type="button" id="align" name="aligh" value="Alignment">
+        <div class="input-item select-list clear-fix">
+            <label>3D Style</label>
+            <select class="input-ui" name="3dStyle">
+                <option value="equator">equator</option>
+                <option value="ball">ball</option>
+            </select>
+            <input type="text" class="input-field hidden-input" name="3dStyleValue"/>
+        </div>
+        <!-- Dimension -->
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>Number</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="numberValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="number" />
+        </div>
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>Distance</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="distanceValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="distance" />
+        </div>
+        <!-- Item Rotation -->
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>RotateX</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="itemRotateXValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="itemRotateX" />
+        </div>
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>RotateZ</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="itemRotateZValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="itemRotateZ" />
+        </div>
+
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>Width</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="widthValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="width" />
+        </div>
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>Height</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="heightValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="height" />
+        </div>
+        <!-- Rotation -->
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>RotateY</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="conRotateYValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="conRotateY" />
+        </div>
+        <!-- Rotation Axis -->
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>RotateX</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="conRotateXValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="conRotateX" />
+        </div>
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>RotateZ</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="conRotateZValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="conRotateZ" />
+        </div>
+        <!-- Perspective -->
+        <div class="input-item range-number compact-range clear-fix">
+            <div class="label-field-container clear-fix">
+                <label>Perspective</label>
+                <div class="field-unit-container">
+                    <input type="number" class="input-field" name="perspectiveValue" />
+                </div>
+            </div>
+            <input type="range" class="input-ui" name="perspective" />
+        </div>
+    </form>
+</section>
+<section class="output-container">
+    <div id="genOut-container">
+        <input type="button" id="genOut" name="Output" value="Generate Report">
+    </div>
+<p id="output">
+.carousel-container {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+.carousel {
+    width  : <span id="outputWidth">100</span>px;
+    height : <span id="outputHeight">100</span>px;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    top: 0; right: 0; bottom: 0; left: 0;
+    margin: auto;
+}
+
+.carousel figure {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0; top: 0;
+}
+
+</p>
+</section>
+<script type="text/javascript">
+    "use strict";
+    var styleFormSetting = {
+        "3dStyle" : {
+            "type" : "select-list",
+            "value" : "equator",
+            "unit" : null,
+            "range" : null
+        },
+        "number" : {
+            "type" : "range-number",
+            "value": 8,
+            "unit" : null,
+            "range": {
+                "none" : [0,16,1]
+            }
+        },
+        "distance" : {
+            "type" : "range-number",
+            "value": 200,
+            "unit" : "px",
+            "range": {
+                "px" : [0,1000,1]
+            }
+        },
+        "itemRotateX" : {
+            "type" : "range-number",
+            "value": 0,
+            "unit" : "deg",
+            "range": {
+                "deg" : [-180,180,1]
+            }
+        },
+        "itemRotateZ" : {
+            "type" : "range-number",
+            "value": 0,
+            "unit" : "deg",
+            "range": {
+                "deg" : [-180,180,1]
+            }
+        },
+        "width" : {
+            "type" : "range-number",
+            "value": 150,
+            "unit" : "px",
+            "range": {
+                "px" : [0,400,1]
+            }
+        },
+        "height" : {
+            "type" : "range-number",
+            "value": 100,
+            "unit" : "px",
+            "range": {
+                "px" : [0,300,1]
+            }
+        },
+        "conRotateY" : {
+            "type" : "range-number",
+            "value": 0,
+            "unit" : "deg",
+            "range": {
+                "deg" : [-400,400,10]
+            }
+        },
+        "conRotateX" : {
+            "type" : "range-number",
+            "value": 0,
+            "unit" : "deg",
+            "range": {
+                "deg" : [-180,180,1]
+            }
+        },
+        "conRotateZ" : {
+            "type" : "range-number",
+            "value": 0,
+            "unit" : "deg",
+            "range": {
+                "deg" : [-180,180,1]
+            }
+        },
+        "perspective" : {
+            "type" : "range-number",
+            "value": 1000,
+            "unit" : null,
+            "range": {
+                "none" : [0,3000,100]
+            }
+        }
+    };
+    var undapteFuncs = (function(){
+        function addPrefixCSS ( target, name, value ) {
+            var keys = ["","-ms-","-webkit-","-mox-","-o-"];
+            $.each(keys,function(i,prefix){
+                $(target).css(prefix+name,value);
+            });
+        }
+        var conTransform = (function(){
+            var conTransform = ["rotateX(",0,"deg) rotateZ(",0,"deg) rotateY(",0,"deg)"],
+                conNameMap = {
+                    "conRotateX" : 1,
+                    "conRotateY" : 5,
+                    "conRotateZ" : 3,
+                };
+            return function(target,name,value) {
+                conTransform[conNameMap[name]] = value;
+                addPrefixCSS(target,"transform",conTransform.join(""));
+            };
+        })();
+        var itemTransform = (function(){
+            var angle = 45,
+                distance = 0,
+                n = 6,
+                templete = [["rotateX(",0,"deg)"],
+                            ["rotateY(",0,"deg)"],
+                            ["rotateZ(",0,"deg)"],
+                            ["translateZ(",0,"px)"]],
+                modelList = {
+                    "equator" : [1,3,0,2],
+                    "ball" : [1,0,2,3]
+                };
+            return function(name,value){
+                switch ( name ) {
+                    case "number" :
+                        n = value;
+                        angle = n===0?0:360/n;
+                        innerDivs = $(".carousel figure");
+                        break;
+                    case "distance":
+                        distance = value;
+                        break;
+                    case "itemRotateX" :
+                        templete[0][1] = value;
+                        break;
+                    case "itemRotateZ" :
+                        templete[2][1] = value;
+                        break;
+                    default :
+                }
+                transformLog = [];
+                $(innerDivs).each(function(i){
+                    if ( i >= n ) {
+                        $(this).css("display","none");
+                    } else {
+                        $(this).css("display","table-cell");
+                        templete[1][1] = angle*i;
+                        templete[3][1] = distance;
+                        var str = [];
+                        $.each(modelList[model],function(i,v){
+                            str.push(templete[v].join(""));
+                        });
+                        addPrefixCSS(this,"transform",str.join(" "));
+                        transformLog[i] = str.join(" ");
+                    }
+                });
+            };
+        })();
+        var demo = $(".carousel"),
+            demoCon = $(".carousel-container"),
+            innerDivs = $(".carousel figure"),
+            transformLog = [],
+            model = "ball";
+        return {
+            updateDemo : function(form,name,value) {
+                switch ( name ) {
+                    case "height" :
+                        $(innerDivs).css("line-height",value+"px");
+                    case "width" :
+                        $(demo).css(name,value);
+                        break;
+                    case "distance" :
+                        itemTransform(name,value);
+                        break;
+                    case "number" :
+                        itemTransform(name,value);
+                        break;
+                    case "itemRotateX" :
+                    case "itemRotateY" :
+                    case "itemRotateZ" :
+                        itemTransform(name,value);
+                        break;
+                    case "conRotateX" :
+                    case "conRotateY" :
+                    case "conRotateZ" :
+                        conTransform(demo,name,value);
+                        break;
+                    case "perspective" :
+                        addPrefixCSS(demoCon,"perspective",value);
+                        break;
+                    case "3dStyle" :
+                        model = value;
+                        form.setStyleValue("number");
+                        break;
+                    default :
+                }
+            },
+            updateOutput : (function(){
+                function genNode (i,str){
+                    templetes[0][1] = i+1;
+                    templetes[1][1] = str;
+                    templetes[2][1] = str;
+                    var temp = [
+                        templetes[0].join(""),
+                        templetes[1].join(""),
+                        templetes[2].join(""),
+                        templetes[3].join(""),
+                    ];
+                    return $("<span class='outputInner'>").html(temp.join("\n"));
+                }
+                var out = $("#output"),
+                    outW = $("#outputWidth"),
+                    outH = $("#outerHeight"),
+                    templetes = [
+                        [".carousel figure:nth-child(",1,") {"],
+                        ["        -webkit-transform: ",1,";"],
+                        ["        transform: ",1,";"],
+                        ["}\n"]
+                    ];
+                return function(form){
+                    outW.text(form.styleValueLog["width"]);
+                    outH.text(form.styleValueLog["height"]);
+                    out.find(".outputInner").remove();
+                    $.each(transformLog,function(i,str){
+                        out.append(genNode(i,str));
+                    });
+                };
+            })()
+        };
+    })();
+    $(document).ready(function(){
+        var form = $("form").get(0);
+        new StyleForm( form, styleFormSetting, undapteFuncs.updateDemo );
+        $("#align").click(function(){
+            var width = Math.round(2*Math.tan(Math.PI/form.styleValueLog["number"])*form.styleValueLog["distance"]);
+            form.setStyleValue("width",width);
+        });
+        $("#genOut").click(function(){
+            undapteFuncs.updateOutput(form);
+        });
+    });
+</script>
+</body>
+</html>
