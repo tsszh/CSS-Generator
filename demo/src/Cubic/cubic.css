@@ -1,0 +1,239 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/****************************************************************/
+/*                     Useful Utilities                         */
+/****************************************************************/
+.absolute-center {
+	position: absolute!important;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+.clear-fix::before,
+.clear-fix::after {
+	content : "";
+	display : table;
+	clear : both;
+}
+/****************************************************************/
+/*                     Main Layout                              */
+/****************************************************************/
+.main-container {
+	width: 100%;
+	padding: 0 5%;
+	min-width: 400px;
+	background: pink;
+}
+.main-section {
+	display: block;
+	width: 100%;
+	background: grey;
+}
+.main-aside {
+	display: block;
+	width: 100%;
+	background: lightyellow;
+}
+@media screen and (min-width: 900px) {
+	/* Full Screen Wrapper */
+	.main-container-wrapper-1 {
+		width: 100%;
+		display: table;
+	}
+	/* Only Allow For 900*700 Above Window */
+	@media screen and (min-height: 700px){
+		.main-container-wrapper-1 {
+			position: fixed;
+			height: 100%;
+		}   
+	}
+	/* Vertical And Horizontal Centralized */
+	.main-container-wrapper-2 {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+	/* Give An 4:3 Or 16:9 Platform */
+	.main-container-wrapper-3 {
+		width: 100%;
+		display: block;
+		position: relative;
+	}
+	.main-container-wrapper-3::before {
+		content: "";
+		display: block;
+		padding-top: 75%;
+	}
+	/* This is The Base Container For All */
+	.main-container {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		top: 0; left: 0;
+	}
+	/* For Left Side Controller */
+	.main-aside {
+		float: left;
+		width: 30%;
+		height: 100%;
+	}
+	/* For Stage And Others */
+	.main-section {
+		width: 70%;
+		height: 100%;
+		float: right;
+		padding: 0;
+	}
+	@media screen and (min-aspect-ratio: 27/20) {
+		/* A 16/9 Platform */
+		.main-container-wrapper-3::before {
+			padding-top: 56.25%;
+		}
+		.main-aside {
+			width: 25%;
+		}
+		.main-section {
+			width: 75%;
+		}
+	}
+}
+
+/****************************************************************/
+/*                     Stage Layout                             */
+/****************************************************************/
+/* Give An 4:3 Or 16:9 Stage */
+.stage-container-wrapper {
+	width: 100%;
+	display: block;
+	position: relative;
+}
+.stage-container-wrapper::before {
+	content: "";
+	display: block;
+	width: 100%;
+	padding-top: 75%;
+}
+.stage-aux-container-wrapper {
+	width: 100%;
+	display: block;
+	position: relative;
+}
+.stage-aux-container-wrapper::before {
+	content: "";
+	display: block;
+	width: 100%;
+	padding-top: 32.14285714%; /* 0.75*30%/70% */
+}
+@media screen and (min-width: 900px) and (min-aspect-ratio: 27/20) {
+	/* A 16/9 Platform */
+	.stage-container-wrapper::before {
+		padding-top: 56.25%;
+	}
+	.stage-aux-container-wrapper::before {
+		padding-top: 18.75%; /* 0.5625*25%/75% */
+	}
+}
+.stage-container {
+	position: absolute;
+	top: 0; left: 0;
+	height: 100%; width: 100%;
+	background: lightblue;
+}
+.stage-aux-container {
+	position: absolute;
+	top: 0; left: 0;
+	height: 100%; width: 100%;
+	background: pink;
+}
+
+/****************************************************************/
+/*                             Stage                            */
+/****************************************************************/
+.stage {
+	position: absolute;
+	height: 80%;
+	width: 80%;
+	top: 10%; left: 10%;
+	background: white;
+	border: 2px solid black;
+}
+.shape-container-wrapper {
+	z-index: 20;
+	width: 400px;
+	height: 400px;
+	position: relative;
+	top: 50%; left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+/****************************************************************/
+/*                     Stage Aux Demo Selection                 */
+/****************************************************************/
+.stage-aux {
+	width: 100%;
+	height: 100%;
+	background: grey;
+}
+.stage-aux label {
+	position: absolute;
+	top: -20px;
+}
+.demo-selection {
+	width: 100%;
+	height: 100%;
+}
+
+/****************************************************************/
+/*                      Left-right-slider                       */
+/* General Setting */
+.left-right-slider .move-arrow {
+	width: 5%;
+	height: 100%;
+	background: pink;
+}
+.left-right-slider .move-arrow:first-of-type {
+	float: left;
+}
+.left-right-slider .move-arrow:last-of-type {
+	float: right;
+}
+.left-right-slider .visible-window {
+	width: 90%;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+.left-right-slider li {
+	display: block;
+	height: 100%;
+	border: 2px solid black;
+	border-right: none;
+	position: absolute;
+	top: 0; left: 100%;
+	-webkit-transition: left 0.2s ease-in-out;
+	-o-transition: left 0.2s ease-in-out;
+	transition: left 0.2s ease-in-out;
+}
+.left-right-slider li:last-child {
+	border-right: 2px solid black;
+}
+/* Specific Setting */
+.demo-selection li {
+	width: 33.33333%;
+}
+@media screen and (min-width: 900px) and (min-aspect-ratio: 27/20) {
+	.demo-selection li {
+		width: 25%;
+	}
+}

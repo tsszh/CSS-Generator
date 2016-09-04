@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 Cube Demo</title>
+	<link rel="stylesheet" href="../../../core/css/input_elements.css" />
+	<link rel="stylesheet" href="cubic.css"/>
+	<link rel="stylesheet" type="text/css" href="StaticShape.css">
+	<script src="../../lib/jquery.v1.11.3.min.js"></script>
+	<script src="../../lib/form-linker.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+<div class="main-container-wrapper-1">
+<div class="main-container-wrapper-2">
+<div class="main-container-wrapper-3">
+<div class="main-container">
+	<section class="main-section">
+		<div class="stage-container-wrapper">
+		<div class="stage-container">
+			<section class="stage">
+				<div class="shape-container-wrapper">
+					<div class="cube-container">
+					    <div class="cube3d">
+					        <figure class="cube-front">1</figure>
+					        <figure class="cube-back">2</figure>
+					        <figure class="cube-left">3</figure>
+					        <figure class="cube-right">4</figure>
+					        <figure class="cube-top">5</figure>
+					        <figure class="cube-bottom">6</figure>
+					    </div>
+					</div>
+				</div>
+			</section>
+		</div>
+		</div>
+		<div class="stage-aux-container-wrapper">
+		<div class="stage-aux-container">
+			<section class="stage-aux">
+				<label>This Is Demo Selection Region!</label>
+				<section class="demo-selection left-right-slider">
+					<div class="move-arrow left-arrow"></div>
+					<ul class="visible-window">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+					</ul>
+					<div class="move-arrow right-arrow"></div>
+				</section>
+			</section>
+		</div>
+		</div>
+	</section>
+	<aside class="main-aside">
+		<form class="control-form">
+		    <fieldset>
+		        <legend>Rotate</legend>
+		        <div class="input-item range-number clear-fix">
+		            <label>RotateX</label>
+		            <input type="number" class="input-field" name="rotateXValue" />
+		            <input type="range" class="input-ui" name="rotateX" />
+		        </div>
+		        <div class="input-item range-number clear-fix">
+		            <label>RotateY</label>
+		            <input type="number" class="input-field" name="rotateYValue" />
+		            <input type="range" class="input-ui" name="rotateY" />
+		        </div>
+		        <div class="input-item range-number clear-fix">
+		            <label>RotateZ</label>
+		            <input type="number" class="input-field" name="rotateZValue" />
+		            <input type="range" class="input-ui" name="rotateZ" />
+		        </div>
+		    </fieldset>
+		    <fieldset>
+		       <legend>View</legend>
+		       <div class="input-item range-number clear-fix">
+		            <label>Opacity</label>
+		            <input type="number" class="input-field" name="opacityValue" />
+		            <input type="range" class="input-ui" name="opacity" />
+		        </div>
+		        <div class="input-item range-number clear-fix">
+		             <label>Perspective</label>
+		             <input type="number" class="input-field" name="perspectiveValue" />
+		             <input type="range" class="input-ui" name="perspective" />
+		         </div>
+		    </fieldset>
+		</form>
+	</aside>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="stageShow.js" type="text/javascript" charset="utf-8"></script>
+<script src="shapeGenerator.js" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript">
+	'use strict';
+	var demo = null;
+	var updateDemo = (function(){
+		function prefixCSSSet ( demo, prop, value ) {
+			$(demo).css(prop,value)
+				   .css('-ms-'+prop,value)
+				   .css('-moz-'+prop,value)
+				   .css('-webkit-'+prop,value);
+		}
+		return function(form,name,value) {
+			if ( name.search('rotate') >= 0 ) {
+				value = ['rotateX(',form.styleValueLog['rotateX'],
+						'deg) rotateY(',form.styleValueLog['rotateY'],'deg) rotateZ(',
+						form.styleValueLog['rotateZ'],'deg)'].join('');
+				prefixCSSSet(demo,'transform',value);
+			} else {
+				switch ( name ) {
+					case 'opacity':
+						$(demo).css('opacity',value);
+						break;
+					case 'perspective':
+						prefixCSSSet($(demo).parent(),'perspective',value);
+						break;
+					default:
+				}
+			}
+		};
+	})();
+	var setup = {
+		'rotateX' : {
+			'type' : 'range-number',
+			'value' : 45,
+			'unit' : null,
+			'range': {
+				"none" : [-200,200]
+			}
+		},
+		'rotateY' : {
+			'type' : 'range-number',
+			'value' : 45,
+			'unit' : null,
+			'range': {
+				"none" : [-200,200]
+			}
+		},
+		'rotateZ' : {
+			'type' : 'range-number',
+			'value' : 45,
+			'unit' : null,
+			'range': {
+				"none" : [-200,200]
+			}
+		},
+		'perspective' : {
+			'type' : 'range-number',
+			'value' : 3000,
+			'unit' : null,
+			'range': {
+				"none" : [0,3000]
+			}
+		},
+		'opacity' : {
+			'type' : 'range-number',
+			'value' : 1,
+			'unit' : null,
+			'range': {
+				"none" : [0,1,0.01]
+			}
+		}
+	};
+	$(document).ready(function(){
+		demo = $('.cube3d');
+		var styleForm = new StyleForm( $('.control-form')[0], setup, updateDemo );
+		demo.parent().css({
+			"height" : "100%",
+			"width" : "100%"
+		});
+		$(window).resize(function(){
+			var width = demo.parent().outerWidth();
+			$(".cube3d figure").css({
+				"line-height" : width+"px",
+				"font-size" : width/2 + "px"
+			});
+			ShapeGenerator.cubeGenerator.reset(demo,width);
+		}).trigger("resize");
+	});
+ </script>
+</body>
+
+
+</html>
